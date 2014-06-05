@@ -76,11 +76,10 @@ class ViewController: UITableViewController, NSXMLParserDelegate {
 		qualifiedName qName: String!) {
 			
 			if elementName == "item" {
-				feed.updateValue(feedTitle, forKey:"title")
-				feed.updateValue(link.componentsSeparatedByString("?")[0] as NSString, forKey:"link")
-				feed.updateValue(feedDescription, forKey:"description")
-				feeds.append(feed)
-				
+				feed["title"] = feedTitle
+				feed["description"] = feedDescription
+				feed["link"] = link.componentsSeparatedByString("?")[0] as NSString
+				feeds += feed
 			}
 	}
 	
